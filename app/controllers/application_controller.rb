@@ -27,7 +27,7 @@ end
         end
     end
 
-    def logged in?
+    def logged_in?
         !!current_user
     end
 

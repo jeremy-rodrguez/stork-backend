@@ -3,14 +3,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create]
       post '/login', to: 'auth#create'
-      get '/profile', to: 'users#profile'
+      post '/sign_up', to: 'users#create'
     end
   end
 
   resources :order_items
   resources :orders
   resources :items
-  # resources :users
   resources :sessions, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
