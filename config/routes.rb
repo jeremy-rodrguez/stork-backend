@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
       post '/sign_up', to: 'users#create'
       get '/profile', to: 'users#profile'
+      get '/logout', to: 'users#destroy'
 
     end
     get '/items' => 'items#index'
