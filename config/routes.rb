@@ -4,13 +4,16 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       post '/login', to: 'auth#create'
       post '/sign_up', to: 'users#create'
+      get '/profile', to: 'users#profile'
+
     end
+    get '/items' => 'items#index'
+    get '/items/:id' => 'items#show'
   end
 
   resources :order_items
   resources :orders
   resources :items
-  resources :sessions, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
