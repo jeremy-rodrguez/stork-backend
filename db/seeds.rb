@@ -7,9 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 OrderItem.destroy_all
-User.destroy_all
 Order.destroy_all
 Item.destroy_all
+User.destroy_all
+
 
 baby_food = "https://images-na.ssl-images-amazon.com/images/I/81HvMBTlnwL._SL1500_.jpg"
 baby_crib = "https://cdn.shopify.com/s/files/1/0522/6912/1736/products/hcyi2jpkttetp3jek76u_f0b32709-d428-427e-9689-5880aca07c98_1512x.jpg?v=1611804458"
@@ -28,7 +29,9 @@ end
     user = User.create(name:Faker::Name.name, email:Faker::Internet.email, password:Faker::Internet.password)
 
     1.times do
-        Order.create(order_number:Faker::Number.leading_zero_number(digits: 10), purchased: false, user_id:user.id)
+        order = Order.create(order_number:Faker::Number.leading_zero_number(digits: 10), purchased: false, user_id:user.id)
+
+        OrderItem.create(order_id: order.id, item_id: Item.first.id)
     end
     
     5.times do

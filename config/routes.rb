@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favorites
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create]
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
     end
     get '/items' => 'items#index'
     get '/items/:id' => 'items#show'
+    # get '/favorites' => 'favorites#index'
+
   end
 
   resources :order_items
