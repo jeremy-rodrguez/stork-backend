@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :set_favorite, only: [:show, :update, :destroy]
+  before_action :set_favorite, only: [:show, :update]
 
   # GET /favorites
   def index
@@ -35,9 +35,9 @@ class FavoritesController < ApplicationController
     end
   end
 
-  # DELETE /favorites/1
   def destroy
-    @favorite.destroy
+    favorite = Favorite.where(["user_id = ? and item_id = ?", favorite_params[:user_id], favorite_params[:item_id]])
+    Favorite.destroy(favorite[0].id)
   end
 
   private
